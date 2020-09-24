@@ -1,0 +1,63 @@
+VBspeed: InStr Call 1
+' speed if early in the string
+SearchString = "http://www.xbeat.net/vbspeed/index.htm"
+Keyword = ":"
+~
+VBspeed: InStr Call 2
+' speed if in left-middle of the string
+SearchString = "http://www.xbeat.net/vbspeed/index.htm"
+Keyword = "."
+~
+VBspeed: InStr Call 3
+' speed if in the end of the string
+SearchString = "http://www.xbeat.net/vbspeed/index.htm"
+Keyword = "m"
+~
+VBspeed: InStr Call 4
+' speed if in the end using TextCompare
+SearchString = "http://www.xbeat.net/vbspeed/index.htm"
+Keyword = "M"
+Compare = vbTextCompare
+~
+VBspeed: InStr Call 5
+' longer keyword test
+SearchString = "http://www.xbeat.net/vbspeed/index.htm"
+Keyword = "www"
+~
+VBspeed: InStr Call 6
+' longer keyword using TextCompare
+SearchString = "http://www.xbeat.net/vbspeed/index.htm"
+Keyword = "WWW"
+Compare = vbTextCompare
+~
+VBspeed: InStr Call 7
+' many occurances but not in the beginning of the string
+SearchString = Space$(999) & String$(99, "x") & Space$(99)
+Keyword = "x"
+~
+VBspeed: InStr Call 8
+' no occurances
+SearchString = Space$(99)
+Keyword = "x"
+~
+VBspeed: InStr Call 8 (mod)
+' no occurances, with a keyword of some size
+SearchString = Space$(99)
+Keyword = "xxxxx"
+~
+Long keyword
+' long keyword in the middle of a long string
+SearchString = Space$(999) & String$(99, "x") & Space$(999)
+Keyword = String$(99, "x")
+~
+Longer keyword
+' even longer keyword in the middle of a very long string
+SearchString = Space$(99999) & String$(9999, "x") & Space$(99999)
+Keyword = String$(9999, "x")
+~
+TextCompare
+' this kills InStr...
+SearchString = Space$(99999) & String$(500, "Xx") & Space$(99999)
+Keyword = String$(500, "xX")
+Compare = vbTextCompare
+~
